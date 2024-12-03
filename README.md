@@ -15,7 +15,7 @@ El sistema utiliza:
 
 El proyecto se divide en dos archivos principales y una imagen generada en la consola de FuzzyCLIPS:
 
-### 1. Base de Conocimientos (`bc_galletas.clp`)
+### 1. **Base de Conocimientos (`bc_galletas.clp`)**
 
 Este archivo contiene:
 - 🗂️ **Plantillas de hechos (`deftemplate`)** que definen los conjuntos difusos para el índice cromático y la temperatura del horno.
@@ -50,7 +50,7 @@ Este archivo contiene:
 )
 ```
 
-### 2. Base de Hechos (`bh_galletas.clp`)
+### 2. **Base de Hechos (`bh_galletas.clp`)**
 Este archivo inicializa los valores actuales del índice cromático, en este caso, 6.
 
 #### Resumen del Contenido:
@@ -60,12 +60,25 @@ Este archivo inicializa los valores actuales del índice cromático, en este cas
 )
 ```
 
-### 3. Imagen de Consola en FuzzyCLIPS 🖼️
-La imagen muestra el resultado del sistema al ejecutarse en FuzzyCLIPS, incluyendo:
-- ✅ La inferencia realizada.
-- 🔥 La temperatura calculada en función del índice cromático.
+### 3. **Resultados en Consola (FuzzyCLIPS)** 🖼️
+La siguiente imagen muestra la ejecución del sistema en FuzzyCLIPS, donde:
+- ✅ Se cargan correctamente la base de conocimientos y los hechos.
+- ⚙️ El motor de inferencia evalúa las reglas y genera las temperaturas difusas.
+- 🔢 Se realiza la defuzzificación para calcular un valor de temperatura preciso.
 
-### Funcionamiento del Sistema 🛠️
+**Resultados de la Consola**:
+- **Hechos iniciales**: Índice cromático (IC) = 6.
+- **Defuzzificación máxima**: Calcula una temperatura de 230.0 °C.
+- **Defuzzificación por momento**: Calcula una temperatura de 206.25 °C.
+
+Esto indica que:
+1. Con un índice cromático de 6, las galletas son clasificadas como medio hechas.
+2. Según las reglas del sistema, el horno ajusta su temperatura a un nivel alto.
+3. Los valores de defuzzificación proporcionan un rango estimado para la temperatura precisa del horno.
+
+![Consola de FuzzyCLIPS](galletas/Captura%20de%20pantalla%202024-12-03%20111444.png)
+
+## Funcionamiento del Sistema 🛠️
  1. **Carga de los Archivos**:
     - `bc_galletas.clp`:  Define las reglas y conjuntos difusos.
     - `bh_galletas.clp`: Define los hechos iniciales (índice cromático = 6).
@@ -85,10 +98,7 @@ La imagen muestra el resultado del sistema al ejecutarse en FuzzyCLIPS, incluyen
      (reset)
      (run)
      ```
-  4. Visualiza el resultado.
-
-### Ejemplo de Salida Esperada 📊
-Con un índice cromático de 6, se infiere que las galletas están medio hechas y la temperatura del horno debe ser alta. Esto se refleja en el valor difuso correspondiente.
-
-
+     
+## Conclusión 🏁
+Este sistema automatiza exitosamente el ajuste de temperatura del horno utilizando lógica difusa, replicando el criterio artesanal de la abuela María. El uso de CLIPS y FuzzyCLIPS permite manejar la incertidumbre en los índices cromáticos, garantizando un control preciso de la cocción de las galletas.
 
