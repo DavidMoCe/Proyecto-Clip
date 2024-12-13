@@ -1,4 +1,121 @@
-# Proyecto: Control Difuso de un Horno con CLIPS para las Galletas de la Abuela María 🍪
+# Project: Fuzzy Control of an Oven with CLIPS for Grandma María's Cookies 🍪
+
+## 🌍 Choose Your Language / Elige tu idioma:
+- [English](#english-)
+- [Español](#español-)
+
+---
+
+## English 🇬🇧
+
+## Project Description
+
+This project implements an expert system based on fuzzy logic to control oven temperature. It simulates Grandma María's artisanal process for baking her famous homemade cookies, where she manually adjusts the temperature based on the cookies' chromatic index. The goal is to automate this process using **CLIPS** and fuzzy sets.
+
+### Implemented System
+
+The system uses:
+- 🌫️ **Fuzzy sets** to represent the cookies baking conditions and the oven's temperature levels.
+- ⚙️ **Rules** that adjust the temperature based on the cookies' chromatic index.
+- 🖥️ **CLIPS inference engine**, which applies the rules and calculates the oven temperature.
+
+## Project Structure 📂
+
+The project is divided into two main files and a console output image generated in FuzzyCLIPS:
+
+### 1. **Knowledge Base (`bc_galletas.clp`)** 
+This file contains:
+
+- 🗂️ **Fact templates (`deftemplate`)** defining fuzzy sets for the chromatic index and oven temperature.
+- 📜 **Fuzzy rules (`defrule`)** describing how to adjust the temperature based on the cookies' baking state.
+
+#### Content Summary:
+```clips
+(deftemplate IC
+    ...
+)
+
+(deftemplate temperature
+    ...
+)
+
+(defrule rule_1
+    (IC slightly_raw)
+    =>
+    (assert (temperature medium))
+)
+
+(defrule rule_2
+    (IC half_done)
+    =>
+    (assert (temperature high))
+)
+
+(defrule rule_3
+    (IC golden)
+    =>
+    (assert (temperature low))
+)
+```
+### 2. **Fact Base (`bh_galletas.clp`)**
+This file initializes the current values for the chromatic index, set to 6 in this case.
+
+#### Content Summary:
+```clips
+(deffacts facts
+    (IC (6 0) (6 1) (6 0)) 
+)
+```
+### 3. Console Results (FuzzyCLIPS) 🖼️
+The following image shows the system's execution in FuzzyCLIPS, where:
+
+- ✅ The knowledge base and facts load successfully.
+- ⚙️ The inference engine evaluates the rules and generates fuzzy temperatures.
+- 🔢 Defuzzification is performed to calculate a precise temperature value.
+
+**Console Results:**
+- **Initial Facts**: Chromatic Index (IC) = 6.
+- **Max Defuzzification**: Calculates a temperature of 230.0 °C.
+- **Center of Gravity Defuzzification**: Calculates a temperature of 206.25 °C.
+
+This indicates that:
+1. With a chromatic index of 6, the cookies are classified as half-done.
+2. According to the system's rules, the oven adjusts its temperature to a high level.
+3. Defuzzification values provide an estimated range for the precise oven temperature.
+
+![FuzzyCLIPS console](galletas/Captura%20de%20pantalla%202024-12-03%20111444.png)
+
+## System Functionality 🛠️
+1. **File Loading**:
+    - `bc_galletas.clp`: Defines rules and fuzzy sets.
+    - `bh_galletas.clp`: Defines initial facts (chromatic index = 6).
+
+2. **Inference Engine**:
+    - Based on the chromatic index value, the system evaluates the rules.
+    - The most suitable fuzzy temperature is selected.
+    - 
+3. **Result**:
+    - The system generates a fuzzy temperature and displays it in the FuzzyCLIPS console.
+
+
+## Requirements to Run the Project 💻
+
+  1. **FuzzyCLIPS** installed on the system.
+  2. Load both files into the FuzzyCLIPS environment.
+  3. Execute the following commands in the console:
+     ```clips
+     (load "bc_galletas.clp")
+     (load "bh_galletas.clp")
+     (reset)
+     (run)
+     ```
+     
+## Conclusion 🏁
+This system successfully automates oven temperature control using fuzzy logic, replicating Grandma María's artisanal criteria. By using CLIPS and FuzzyCLIPS, it effectively manages the uncertainty in chromatic indices, ensuring precise cookie baking control.
+
+---
+
+## Español 🇪🇸
 
 ## Descripción del Proyecto
 
@@ -16,7 +133,6 @@ El sistema utiliza:
 El proyecto se divide en dos archivos principales y una imagen generada en la consola de FuzzyCLIPS:
 
 ### 1. **Base de Conocimientos (`bc_galletas.clp`)**
-
 Este archivo contiene:
 - 🗂️ **Plantillas de hechos (`deftemplate`)** que definen los conjuntos difusos para el índice cromático y la temperatura del horno.
 - 📜 **Reglas difusas (`defrule`)** que describen cómo ajustar la temperatura en función del estado de cocción de las galletas.
